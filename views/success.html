@@ -1,0 +1,53 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/animate.css">
+    <script src="/javascripts/jquery-2.1.1.min.js"></script>
+</head>
+<style>
+    body{
+        padding:10px;
+        margin:auto;
+    }
+</style>
+<body>
+    <% if(success){ %>
+    <div class="alert alert-success tip"><%= success %></div>
+    <% } %>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h1><%= title %></h1>
+                <div class="alert alert-success">欢迎&nbsp;&nbsp;&nbsp;&nbsp;<%= username %>登录</div>
+                <form class="form-horizontal" method="post">
+                    标题<input type="text" name="uid" class="form-control" required="required">
+                    内容<textarea class="form-control" style="height:200px;" name="content" required="required"></textarea>
+                    <input type="submit" value="提交" class="btn btn-success" style="margin-top:30px;">
+                    <a href="/content" class="btn btn-primary" style="margin-top: 30px;margin-left:100px;">我要看文</a>
+                </form>
+                <a href="/logout" class="btn btn-danger" style="margin-top:200px;">退出登录</a>
+                <a class="btn btn-default ajax">ajax请求</a>
+            </div>
+        </div>
+</body>
+<script>
+    $('.tip').addClass('animated bounceIn');
+
+    $('.ajax').click(function(){
+       $.ajax({
+           url: '/success_ajax',
+           type: 'GET',
+           async: true,
+           success: function (res) {
+               console.log(res);
+           },
+           error: function (err) {
+               console.log(err);
+           }
+       })
+    })
+</script>
+</html>

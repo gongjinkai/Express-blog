@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title><%= title %></title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <style>
+    body{
+      font-family: 微软雅黑;
+    }
+    .navbar-our{
+      background: #0e90d2;
+      border: none;
+      border-radius: 0;
+      margin-bottom: 0;
+    }
+    .navbar-default .navbar-brand{
+      color :#fff;
+      font-family: Calibri;
+    }
+    .navbar-default .navbar-brand strong{
+      font-size: 24px;
+    }
+    .navbar-default .navbar-brand small{
+      font-size: 14px;
+    }
+    .navbar-default .navbar-nav>li>a{
+      color: #fff;
+    }
+    .navbar-default .navbar-nav>li>a>.badge{
+      background: orange;
+    }
+    .navbar-default .navbar-toggle .icon-bar {
+      background-color: #fff;
+    }
+    .navbar-nav li  {
+      transition: all .4s linear;
+    }
+    .navbar-nav li:hover{
+      background: #FF6666;
+    }
+    .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover{
+      color: #fff;
+    }
+    .top-nav{
+      padding:0;background:rgba(7,17,27,.6);
+    }
+    .slidebar-left{
+      height: 100%;
+      background: #2d6684;;
+    }
+    .nav-tabs{
+      border-bottom: none;
+    }
+    .main-menu>li>a{
+      margin-right: 0;
+      padding: 15px 10px 14px 10px;
+      color: #fff;
+      font-size: 14px;
+      border: none;
+      border-radius: 0;
+    }
+    .wrapper{
+      padding:10px 0;
+      font-family: "Comic Sans MS";
+      color: #2d6684;
+      background: linear-gradient(#2196F3,#ffe2e2);
+      overflow: hidden;
+    }
+    .wrapper .animate-success{
+      animation: move 1s;
+    }
+    @keyframes move {
+      0%{
+        opacity: .2;
+        -webkit-transform: translateX(30px) rotate(20deg);
+        transform: scale(1.4,1.4);
+      }
+      100%{
+        opacity: 1;
+        -webkit-transform: translateX(-30px) rotate(-20deg);
+        transform: scale(1,1);
+      }
+    }
+    .big-font{
+      font-size: 72px;
+    }
+    .title-box{
+      display: inline-block;
+      margin: 8px;
+      padding: 15px;
+      box-shadow: 1px 1px 4px 1px #333333;
+    }
+    .about-me{
+      margin-top:15px;
+      background: #f7f7f7;
+    }
+    .content-title{
+      margin: 0 15px;
+      padding: 10px 0;
+      border: 1px solid #eee;
+    }
+    .content-title ul li {
+      list-style: none;
+      border-right: 1px solid #eee;
+    }
+    .content-title ul li:last-child{
+      border-right: none;
+    }
+    .content-title li span {
+      width: 36px;
+      height: 36px;
+      display: block;
+      text-align: center;
+      font-size: 36px;
+      color: #333333;
+    }
+    .circle-box{
+      display: inline-block;
+      background: #eee;
+      padding: 15px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .clearfix:after{
+      clear: both;
+      content: "";
+      overflow: hidden;
+    }
+    .clear{
+      padding: 0;
+    }
+    .photo-title{
+      color: #FF6666;
+      font-weight: 700;
+    }
+    .photo-desc{
+      color: slateblue;
+      font-size:18px;
+    }
+    .photo{
+      padding:20px 0;
+    }
+    .photo .container .col-md-3 {
+      padding:0;
+    }
+    .images-box{
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .images-box:hover .small-desc{
+      opacity: 1;
+      bottom:0;
+    }
+    .images-box:hover .small-images img {
+      opacity: .8;
+    }
+
+    .small-desc{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      bottom:-200px;
+      left:0;
+      opacity: 0;
+      background: #FF6666;
+      transition: all .6s linear;
+    }
+  </style>
+  <body>
+      <header>
+        <nav class="navbar navbar-default navbar-our" role="navigation">
+          <div class="container">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse" id="btn1">
+                  <span class="sr-only">切换导航</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                  <strong>Xiao</strong>&nbsp;&nbsp;&nbsp;<small>Blog</small>
+                </a>
+              </div>
+              <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="#">欢迎你,<%= username%></a></li>
+                  <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <span class="glyphicon glyphicon-comment" style="vertical-align: middle"></span>
+                      我的消息
+                      <span class="badge"><%= message.length%></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                      <% message.forEach(function (val) { %>
+                      <li class="divider"></li>
+                      <li><a><%= val%></a></li>
+                      <% }) %>
+                    </ul>
+                  </li>
+                  <%if(username){%>
+                  <li><a href="/logout">注销</a></li>
+                  <%    } else {%>
+                  <li><a href="/login">登录</a></li>
+                  <% } %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="wrapper">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <p class="big-font">Blog</p>
+              <p>基于Express.Mongodb一个很简单的项目</p>
+              <strong>作者:<%= author%></strong>
+              <h4>文章列表</h4>
+              <% demos.forEach(function (demo, index) { %>
+              <a href="#" class="title-box"><%= demo.uid%></a>
+              <% }) %>
+            </div>
+            <div class="col-md-6">
+              <img src="/images/blog.jpg" class="img-rounded" width="100%" height="100%">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-me">
+        <div class="content-title clearfix text-center">
+          <ul class="clearfix clear">
+            <li class="col-md-3 col-sm-6">
+              <div class="circle-box">
+                <span class="glyphicon glyphicon-folder-open"></span>
+              </div>
+              <p style="margin-top:5px;color: #5eb95e">文章数量</p>
+              <p><%= num%></p>
+            </li>
+            <li class="col-md-3 col-sm-6">
+              <div class="circle-box">
+                <span class="glyphicon glyphicon-random"></span>
+              </div>
+              <p style="margin-top:5px;color: #F37B1D;">客流量</p>
+              <p>2000</p>
+            </li>
+            <li class="col-md-3 col-sm-6">
+              <div class="circle-box">
+                <span class="glyphicon glyphicon-facetime-video"></span>
+              </div>
+              <p style="margin-top:5px;color: royalblue">录像</p>
+              <p id="num">2000</p>
+            </li>
+            <li class="col-md-3 col-sm-6">
+              <div class="circle-box">
+                <span class="glyphicon glyphicon-map-marker"></span>
+              </div>
+              <p style="margin-top:5px;color: lightgreen">您的位置</p>
+              <p>2000</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="photo">
+        <h2 class="text-center photo-title">照片墙</h2>
+        <p class="text-center photo-desc">分享精彩一刻,记住这一瞬间的永恒</p>
+        <div class="container">
+          <div class="col-md-3">
+            <div class="images-box">
+              <div class="small-images">
+                <img src="/images/photo1.jpg" width="285" height="220">
+              </div>
+              <div class="small-desc">
+                <h1>镜头1</h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="images-box">
+              <div class="small-images">
+                <img src="/images/photo2.jpg" width="285" height="220">
+              </div>
+              <div class="small-desc">
+                <h1>镜头2</h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="images-box">
+              <div class="small-images">
+                <img src="/images/photo3.jpg" width="285" height="220">
+              </div>
+              <div class="small-desc">
+                <h1>镜头3</h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3" style="padding-left: 0;">
+            <div class="images-box">
+              <div class="small-images">
+                <img src="/images/photo4.jpg" width="285" height="220">
+              </div>
+              <div class="small-desc">
+                <h1>镜头4</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
+<script>
+  $(function () {
+      $(".title-box").addClass("animated rollIn");
+      $(".wrapper img ").addClass('animate-success');
+  });
+
+  $(window).scroll(function () {
+      if ($(".navbar").offset().top > 50) {
+          $(".navbar-fixed-top").addClass("top-nav");
+      }else {
+          $(".navbar-fixed-top").removeClass("top-nav");
+      }
+  })
+
+  /*
+  var num = $("#num").text();
+  var a = parseInt(num);
+  setInterval(function(){
+      a+=1;
+      $("#num").text(a);
+  },100)
+
+</script>
+</html>

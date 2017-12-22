@@ -1,0 +1,19 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/animate.css">
+    <script src="/javascripts/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+<% if(success){ %>
+<div class="alert alert-success tip"><%= success %></div>
+<% } %>
+
+</body>
+<script>
+    $('.tip').addClass('animated bounceIn');
+</script>
+</html>

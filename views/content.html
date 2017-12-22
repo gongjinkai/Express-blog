@@ -1,0 +1,41 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title><%= title %></title>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/animate.css">
+    <script src="/javascripts/jquery-2.1.1.min.js"></script>
+</head>
+<style>
+    body{
+        padding: 10px;
+    }
+    .content{
+        position: relative;
+        padding:15px;
+        margin-bottom:20px;
+        box-shadow: 1px 1px 4px 1px #333333;
+        transition: all .8s linear;
+    }
+    .content:hover{
+        transform: translateY(10px);
+    }
+</style>
+<body>
+    <div class="alert alert-success">用户<%= username %></div>
+    <% demos.forEach(function (demo, index) { %>
+    <div class="content">
+    <h1>作者:<%= demo.name%></h1>
+    <p><%= demo.uid%></p>
+    <p><%= demo.content %></p>
+    <p class="info">
+        日期：<%= demo.createTime %>
+    </p>
+    </div>
+    <% }) %>
+        <a href="javascript:history.back()" class="btn btn-danger">返回上一级</a>
+</body>
+</html>

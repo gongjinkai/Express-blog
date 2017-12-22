@@ -1,0 +1,353 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/animate.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_344546_4ppy292rt93k57b9.css">
+    <script src="/javascripts/jquery-2.1.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+    body{
+        font-family: 微软雅黑;
+    }
+    .navbar-our{
+        background: #333;
+        border: none;
+        border-radius: 0;
+        margin-bottom: 0;
+    }
+    .navbar-default .navbar-brand{
+        color :#fff;
+        font-family: Calibri;
+    }
+    .navbar-default .navbar-brand strong{
+        font-size: 24px;
+    }
+    .navbar-default .navbar-brand small{
+        font-size: 14px;
+    }
+    .navbar-default .navbar-nav>li>a{
+        color: #fff;
+    }
+    .navbar-default .navbar-nav>li>a>.badge{
+        background: orange;
+    }
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: #fff;
+    }
+    .navbar-nav li  {
+        transition: all .4s linear;
+    }
+    .navbar-nav li:hover{
+        background: #FF6666;
+    }
+    .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover{
+        color: #fff;
+    }
+    .login-wrapper{
+        padding: 200px 0;
+        background: #0e90d2;
+        color: #fff;
+    }
+    .btnBox{
+        background:lightgreen;
+        color:#fff;
+        border:none;
+        position:relative;
+        height: 40px;
+        font-size:1.4em;
+        padding: 0 2em;
+        cursor:pointer;
+        transition: all .8s linear;
+        outline:none;
+        overflow:hidden;
+    }
+    .btnBox:hover{
+        background:#fff;
+        color: lightgreen;
+    }
+    .btnBox .line:nth-child(1){
+        position:absolute;
+        top:0;
+        left: -134px;
+        width:134px;
+        height: 2px;
+        background:indianred;
+        transition: all .8s linear;
+    }
+    .btnBox .line:nth-child(2){
+        position:absolute;
+        top:-40px;
+        right: 0;
+        width: 2px;
+        height: 40px;
+        background:indianred;
+        transition: all .8s linear;
+    }
+    .btnBox .line:nth-child(3){
+        position:absolute;
+        right: -134px;
+        top: 38px;
+        width:134px;
+        height: 2px;
+        background:indianred;
+        transition: all .8s linear;
+    }
+    .btnBox .line:nth-child(4){
+        position:absolute;
+        top: 40px;
+        left: 0;
+        width:2px;
+        height: 40px;
+        background:indianred;
+        transition: all .8s linear;
+    }
+    .btnBox:hover .line:nth-child(1){
+        transform: translateX(134px);
+    }
+    .btnBox:hover .line:nth-child(2){
+        transform:translateY(40px);
+
+    }
+    .btnBox:hover .line:nth-child(3){
+        transform: translateX(-134px);
+    }
+    .btnBox:hover .line:nth-child(4){
+        transform:translateY(-40px);
+    }
+    .btnSearch{
+        background:#b14569;
+        color:#fff;
+        border:none;
+        position:relative;
+        height: 40px;
+        font-size:1.4em;
+        padding: 0 1em;
+        cursor:pointer;
+        transition: all .8s linear;
+        outline:none;
+        overflow:hidden;
+        margin-left:10px;
+    }
+    .btnSearch:hover{
+        background:#fff;
+        color: #b14569;
+    }
+    .btnSearch .line:nth-child(1){
+        position:absolute;
+        top:0;
+        left: -134px;
+        width:134px;
+        height: 2px;
+        background:indianred;
+        transition: all .8s linear;
+    }
+    .btnSearch .line:nth-child(2){
+        position:absolute;
+        top:-40px;
+        right: 0;
+        width: 2px;
+        height: 40px;
+        background:indianred;
+        transition: all .8s linear;
+    }
+    .btnSearch .line:nth-child(3){
+        position:absolute;
+        right: -134px;
+        top: 38px;
+        width:134px;
+        height: 2px;
+        background:indianred;
+        transition: all .8s linear;
+    }
+    .btnSearch .line:nth-child(4){
+        position:absolute;
+        top: 40px;
+        left: 0;
+        width:2px;
+        height: 40px;
+        background:indianred;
+        transition: all .8s linear;
+    }
+    .btnSearch:hover .line:nth-child(1){
+        transform: translateX(134px);
+    }
+    .btnSearch:hover .line:nth-child(2){
+        transform:translateY(40px);
+
+    }
+    .btnSearch:hover .line:nth-child(3){
+        transform: translateX(-134px);
+    }
+    .btnSearch:hover .line:nth-child(4){
+        transform:translateY(-40px);
+    }
+    .line-content{
+        padding: 10px 0;
+        color: #fff;
+        font-size: 16px;
+        background: #10a0ea;
+    }
+    .footer-content{
+        padding: 80px 0;
+        background: #333;
+    }
+    .footer-content .iconfont{
+        color: #fff;
+        font-size: 22px;
+        cursor: pointer;
+        padding: 5px;
+        background: #2398f5;
+    }
+    .footer-content a{
+        text-decoration: none;
+    }
+    .jumpBox{
+        position: relative;
+        display: inline-block;
+        animation: jump 0.8s;
+    }
+    @keyframes jump {
+       from{
+           left: -300px;
+           transform: rotate(120deg);
+       }
+       to{
+           left: 0;
+           transform: rotate(0deg);
+       }
+    }
+</style>
+<body>
+    <header>
+    <nav class="navbar navbar-default navbar-our" role="navigation">
+        <div class="container">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse" id="btn1">
+                        <span class="sr-only">切换导航</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        <strong>Express</strong>&nbsp;&nbsp;&nbsp;<small>Blog</small>
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">主页</a></li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-comment" style="vertical-align: middle"></span>
+                                我的消息
+                                <span class="badge">bbb</span>
+                            </a>
+
+                        </li>
+
+                        <li><a href="/logout">注销</a></li>
+
+                        <li><a href="/login">登录</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+    <div class="login-wrapper">
+        <h2 class="text-center" style="color: #fff;">用户登录</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-4">
+                    <form class="form-horizontal" role="form" method="post" action="/login">
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label">用户名</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="username" name="username"
+                                       placeholder="请输入用户名" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="col-sm-2 control-label">密码</label>
+                            <div class="col-sm-6">
+                                <input type="password" class="form-control" id="password" name="password"
+                                       placeholder="请输入密码" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> 请记住我
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btnBox">
+                                    <span class="line"></span>
+                                    <span class="line"></span>
+                                    <span class="line"></span>
+                                    <span class="line"></span>登录
+                                </button>
+                                <button type="submit" class="btnSearch">
+                                    <span class="line"></span>
+                                    <span class="line"></span>
+                                    <span class="line"></span>
+                                    <span class="line"></span>找回密码
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="line-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">2017-12-21&nbsp;&nbsp;|&nbsp;Create</div>
+                <div class="col-md-6"></div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a href="" class="jumpBox">
+                            <span class="iconfont icon-google" data-toggle="tooltip" title="谷歌"></span>&nbsp;
+                        </a>
+                        <a href="" class="jumpBox">
+                            <span class="iconfont icon-iconfonticonfontweibo" data-toggle="tooltip" title="微博"></span>&nbsp;
+                        </a>
+                        <a href="" class="jumpBox">
+                            <span class="iconfont icon-Ankerwebicon-" data-toggle="tooltip" title="facebook"></span>&nbsp;
+                        </a>
+                        <a href="" class="jumpBox">
+                            <span class="iconfont icon-tubiaozhizuomoban-" data-toggle="tooltip" title="youtube"></span>
+                        </a>
+                        <a href="https://github.com/gongjinkai" class="jumpBox">
+                            <span class="iconfont icon-github" data-toggle="tooltip" title="github"></span>
+                        </a>
+                    </div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+<script>
+    $('[data-toggle="tooltip"]').tooltip({
+        container: 'body'
+    });
+</script>
+</html>
